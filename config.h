@@ -42,13 +42,13 @@ static const char *ignore_names[] = {"bar", "xclock"};
 ///--Menus and Programs---///
 static const char *menucmd[]   = { "", NULL };
 ///--Custom foo---///
-static void halfandcentered(const Arg *arg)
-{
-	Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT};
-	maxhalf(&arg2);
-	Arg arg3 = {.i=TWOBWM_TELEPORT_CENTER};
-	teleport(&arg3);
-}
+/* static void halfandcentered(const Arg *arg) */
+/* { */
+/* 	Arg arg2 = {.i=TWOBWM_MAXHALF_VERTICAL_LEFT}; */
+/* 	maxhalf(&arg2); */
+/* 	Arg arg3 = {.i=TWOBWM_TELEPORT_CENTER}; */
+/* 	teleport(&arg3); */
+/* } */
 ///---Shortcuts---///
 /* Check /usr/include/X11/keysymdef.h for the list of all keys
  * 0x000000 is for no modkey
@@ -57,7 +57,7 @@ static void halfandcentered(const Arg *arg)
  * KeyRelease event, serial 40, synthetic NO, window 0x1e00001,
  *  root 0x98, subw 0x0, time 211120530, (128,73), root:(855,214),
  *  state 0x10, keycode 171 (keysym 0x1008ff17, XF86AudioNext), same_screen YES,
- *  XLookupString gives 0 bytes: 
+ *  XLookupString gives 0 bytes:
  *  XFilterEvent returns: False
  *
  *  The keycode here is keysym 0x1008ff17, so use  0x1008ff17
@@ -149,8 +149,8 @@ static key keys[] = {
     //unfold horizontally
     {  MOD |SHIFT|CONTROL,XK_n,          maxhalf,           {.i=TWOBWM_MAXHALF_UNFOLD_HORIZONTAL}},
     // Next/Previous screen
-    {  MOD ,              XK_comma,      changescreen,      {.i=TWOBWM_NEXT_SCREEN}},
-    {  MOD ,              XK_period,     changescreen,      {.i=TWOBWM_PREVIOUS_SCREEN}},
+    {  MOD ,              XK_period,     changescreen,      {.i=TWOBWM_NEXT_SCREEN}},
+    {  MOD ,              XK_comma,      changescreen,      {.i=TWOBWM_PREVIOUS_SCREEN}},
     // Raise or lower a window
     {  MOD ,              XK_r,          raiseorlower,      {}},
     // Next/Previous workspace
@@ -178,11 +178,11 @@ static key keys[] = {
     {  MOD |SHIFT,        XK_Right,      cursor_move,       {.i=TWOBWM_CURSOR_RIGHT}},
     {  MOD |SHIFT,        XK_Left,       cursor_move,       {.i=TWOBWM_CURSOR_LEFT}},
     // Start programs
-    {  MOD ,              XK_w,          start,             {.com = menucmd}},
+    //{  MOD ,              XK_w,          start,             {.com = menucmd}},
     // Exit or restart 2bwm
     {  MOD |CONTROL,      XK_q,          twobwm_exit,       {.i=0}},
     {  MOD |CONTROL,      XK_r,          twobwm_restart,    {.i=0}},
-    {  MOD ,              XK_space,      halfandcentered,   {.i=0}},
+    //{  MOD ,              XK_space,      halfandcentered,   {.i=0}},
     // Change current workspace
        DESKTOPCHANGE(     XK_1,                             0)
        DESKTOPCHANGE(     XK_2,                             1)
@@ -199,7 +199,7 @@ static key keys[] = {
 static Button buttons[] = {
     {  MOD        ,XCB_BUTTON_INDEX_1,     mousemotion,   {.i=TWOBWM_MOVE}, false},
     {  MOD        ,XCB_BUTTON_INDEX_3,     mousemotion,   {.i=TWOBWM_RESIZE}, false},
-    {  0          ,XCB_BUTTON_INDEX_3,     start,         {.com = menucmd}, true},
+    //{  0          ,XCB_BUTTON_INDEX_3,     start,         {.com = menucmd}, true},
     {  MOD|SHIFT,  XCB_BUTTON_INDEX_1,     changeworkspace, {.i=0}, false},
     {  MOD|SHIFT,  XCB_BUTTON_INDEX_3,     changeworkspace, {.i=1}, false},
     {  MOD|ALT,    XCB_BUTTON_INDEX_1,     changescreen,    {.i=1}, false},
